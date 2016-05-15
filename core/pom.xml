@@ -8,6 +8,7 @@
     </parent>
     <artifactId>pdf4j-icepdf-core</artifactId>
     <name>ICEPDF4 Core</name> 
+    <url>http://pdf4j.gitbub.io/icepdf4</url>
     <build>
         <plugins>
             <plugin>

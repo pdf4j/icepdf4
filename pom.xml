@@ -1,13 +1,11 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-	
     <groupId>org.pdf4j.icepdf</groupId>
     <artifactId>pdf4j-icepdf-pom</artifactId>
     <version>4.4.1</version>
-	
     <name>ICEPDF4 Pom</name>
-	
+    <url>http://pdf4j.gitbub.io/icepdf4</url>
     <packaging>pom</packaging>
     <properties>
         <jdk.version>1.6</jdk.version>

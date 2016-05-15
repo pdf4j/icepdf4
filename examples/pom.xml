@@ -8,6 +8,7 @@
     </parent> 
     <artifactId>pdf4j-icepdf-examples</artifactId>
     <name>ICEPDF4 Examples</name>	
+	<url>http://pdf4j.gitbub.io/icepdf4</url>
     <properties>
         <batik.version>1.6</batik.version>
     </properties>    	

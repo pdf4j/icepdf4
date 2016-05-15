@@ -8,6 +8,7 @@
     </parent> 
     <artifactId>pdf4j-icepdf-viewer</artifactId>
     <name>ICEPDF4 Viewer</name>	
+    <url>http://pdf4j.gitbub.io/icepdf4</url>
     <properties>
         <batik.version>1.6</batik.version>
     </properties>    	
