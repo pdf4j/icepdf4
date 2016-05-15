@@ -16,6 +16,7 @@
     <modules>
         <module>core</module>
         <module>viewer</module>
+        <module>viewerapp</module>
         <module>examples</module>
         <module>webviewer</module>
     </modules>
