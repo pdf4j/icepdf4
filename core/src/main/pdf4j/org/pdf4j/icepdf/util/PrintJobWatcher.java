@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2012 ICEsoft Technologies Inc.
+ * Copyright 2011-2016 pdf4j.org
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the
@@ -12,7 +12,7 @@
  * IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either * express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.icepdf.core.util;
+package org.pdf4j.icepdf.util;
 
 import javax.print.DocPrintJob;
 import javax.print.event.PrintJobAdapter;

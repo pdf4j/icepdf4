@@ -1,4 +1,18 @@
-package org.icepdf.core.util;
+/*
+ * Copyright 2011-2016 pdf4j.org
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the
+ * License. You may obtain a copy of the License at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an "AS
+ * IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either * express or implied. See the License for the specific language
+ * governing permissions and limitations under the License.
+ */
+ package org.pdf4j.icepdf.util;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -20,6 +34,7 @@ import javax.print.attribute.standard.PrintQuality;
 import org.icepdf.core.exceptions.PDFException;
 import org.icepdf.core.exceptions.PDFSecurityException;
 import org.icepdf.core.pobjects.Document;
+import org.icepdf.core.util.Defs;
 
 /**
  * java PrinterApplicaion -file "pdf file name" -printer "printer name"

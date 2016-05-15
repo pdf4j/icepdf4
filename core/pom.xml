@@ -36,7 +36,7 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>org.icepdf.core.util.PrinterApplication</mainClass>
+                            <mainClass>org.pdf4j.icepdf.util.PrinterApplication</mainClass>
                         </manifest>
                     </archive>
                 </configuration>
