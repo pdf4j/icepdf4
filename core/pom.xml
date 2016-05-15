@@ -7,5 +7,20 @@
         <version>4.4.1</version>
     </parent>
     <artifactId>icepdf-core</artifactId>
-    <name>ICEPDF4 Core</name>  	
+    <name>ICEPDF4 Core</name> 
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>org.icepdf.core.util.PrinterApplication</mainClass>
+                        </manifest>
+                    </archive>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build> 	
 </project>
