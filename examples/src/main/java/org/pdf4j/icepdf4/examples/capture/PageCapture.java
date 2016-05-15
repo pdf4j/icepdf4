@@ -1,3 +1,5 @@
+package org.pdf4j.icepdf4.examples.capture;
+
 /*
  * Copyright 2006-2012 ICEsoft Technologies Inc.
  *
@@ -12,31 +14,28 @@
  * IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either * express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.pdf4j.icepdf4.extraction;
 
+
+import org.icepdf.core.pobjects.Document;
+import org.icepdf.core.pobjects.Page;
 import org.icepdf.core.exceptions.PDFException;
 import org.icepdf.core.exceptions.PDFSecurityException;
-import org.icepdf.core.pobjects.Document;
+import org.icepdf.core.util.GraphicsRenderingHints;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.awt.image.RenderedImage;
-import java.awt.*;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.IOException;
-import java.util.Vector;
-import java.util.Enumeration;
+import java.io.*;
 
 /**
- * The <code>PageImageExtraction</code> class is an example of how to extract
- * images from a PDF document.  A file specified at the command line is opened
- * and any images that are embedded in the first page's content are
- * saved to disk as PNG graphic files. 
+ * The <code>PageCapture</code> class is an example of how to save page
+ * captures to disk.  A file specified at the command line is opened and every
+ * page in the document is captured as an image and saved to disk as a
+ * PNG graphic file.  
  *
  * @since 2.0
  */
-public class PageImageExtraction {
+public class PageCapture {
     public static void main(String[] args) {
 
         // Get a file from the command line to open
@@ -56,28 +55,28 @@ public class PageImageExtraction {
             System.out.println("Error handling PDF document " + ex);
         }
 
-        // Get images from the first page of the document, asuming that there
-        // is at least one image to extract.
-        int pagNumber = 0;
-        int count = 0;
-        Vector images = document.getPageImages(pagNumber);
-        Enumeration pageImages = images.elements();
-        while (pageImages.hasMoreElements()) {
-            count++;
-            Image image = (Image) pageImages.nextElement();
-            if (image != null) {
-                RenderedImage rendImage = (BufferedImage) image;
-                try {
-                    File file = new File("imageCapture1_" + count + ".png");
-                    ImageIO.write(rendImage, "png", file);
+        // save page caputres to file.
+        float scale = 1.0f;
+        float rotation = 0f;
 
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-                image.flush();
+        // Paint each pages content to an image and write the image to file
+        for (int i = 0; i < document.getNumberOfPages(); i++) {
+            BufferedImage image = (BufferedImage)
+                    document.getPageImage(i,
+                                          GraphicsRenderingHints.SCREEN,
+                                          Page.BOUNDARY_CROPBOX, rotation, scale);
+            RenderedImage rendImage = image;
+            // capture the page image to file
+            try {
+                System.out.println("\t capturing page " + i);
+                File file = new File("imageCapture1_" + i + ".png");
+                ImageIO.write(rendImage, "png", file);
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
+            image.flush();
         }
-
         // clean up resources
         document.dispose();
     }

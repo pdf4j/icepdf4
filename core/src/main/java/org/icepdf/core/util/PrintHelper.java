@@ -137,7 +137,10 @@ public class PrintHelper implements Printable {
                        HashPrintRequestAttributeSet printRequestAttributeSet) {
         this.viewController = viewController;
         this.pageTree = pageTree;
-        this.userRotation = this.viewController.getRotation();
+        if (this.viewController != null)
+            this.userRotation = this.viewController.getRotation();
+        else
+            this.userRotation = 0f;
         // blindly assign doc and print attribute sets.
         this.docAttributeSet = docAttributeSet;
         this.printRequestAttributeSet = printRequestAttributeSet;

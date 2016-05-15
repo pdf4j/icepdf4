@@ -12,11 +12,10 @@
  * IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either * express or implied. See the License for the specific language
  * governing permissions and limitations under the License.
  */
-package org.pdf4j.icepdf4.annotation;
+package org.pdf4j.icepdf4.examples.annotation;
 
 import org.icepdf.core.pobjects.Destination;
 import org.icepdf.core.pobjects.Document;
-import org.icepdf.core.pobjects.Page;
 import org.icepdf.core.pobjects.Reference;
 import org.icepdf.core.pobjects.actions.ActionFactory;
 import org.icepdf.core.pobjects.actions.GoToAction;
@@ -28,6 +27,7 @@ import org.icepdf.core.util.Library;
 import org.icepdf.core.views.swing.AbstractPageViewComponent;
 import org.icepdf.ri.common.SwingController;
 import org.icepdf.ri.common.SwingViewBuilder;
+import org.icepdf.ri.common.views.DocumentViewControllerImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -51,13 +51,13 @@ import java.util.Vector;
  * annotation but optionally can be compiled to build GotoActions to 'goto'
  * the last page of the document when executed.
  * <p/>
- * The annotation are created before the Document view is created so we
+ * The annotation are created after the Document view is created so we
  * have to create new annotation slightly differently then if we where adding
- * them after the view was created. 
+ * them before teh view was created.
  *
  * @since 4.0
  */
-public class NewAnnotationPrePageLoad {
+public class NewAnnotationPostPageLoad {
     public static void main(String[] args) {
 
         if (args.length < 2) {
@@ -89,6 +89,9 @@ public class NewAnnotationPrePageLoad {
         controller.getDocumentViewController().setAnnotationCallback(
                 new org.icepdf.ri.common.MyAnnotationCallback(
                         controller.getDocumentViewController()));
+        // set document view mode
+        controller.getDocumentViewController().setViewType(
+                DocumentViewControllerImpl.ONE_COLUMN_VIEW);
 
         // Now that the GUI is all in place, we can try opening the PDF
         controller.openDocument(filePath);
@@ -113,10 +116,13 @@ public class NewAnnotationPrePageLoad {
             pageCount = document.getNumberOfPages();
         }
 
-        /**
-         * Apply the search -> annotation results before the gui is build
-         */
+        // show the document and the new annotations.
+        applicationFrame.pack();
+        applicationFrame.setVisible(true);
 
+        /**
+         * Apply the search -> annotation resulst after the gui is build
+         */
         // new annotation look and feel
         AnnotationState annotationState =
                 new AnnotationState(Annotation.VISIBLE_RECTANGLE,
@@ -125,12 +131,16 @@ public class NewAnnotationPrePageLoad {
 
         // list of founds words to print out
         ArrayList<WordText> foundWords;
+        java.util.List<AbstractPageViewComponent> pageComponents =
+                controller.getDocumentViewController()
+                        .getDocumentViewModel().getPageComponents();
         for (int pageIndex = 0; pageIndex < pageCount; pageIndex++) {
             // get the search results for this page
             foundWords = searchController.searchPage(pageIndex);
             if (foundWords != null) {
                 // get the current page lock and start adding the annotations
-                Page page = document.getPageTree().getPage(pageIndex, foundWords);
+                AbstractPageViewComponent pageViewComponent =
+                        pageComponents.get(pageIndex);
                 for (WordText wordText : foundWords) {
                     // create a  new link annotation
                     LinkAnnotation linkAnnotation = (LinkAnnotation)
@@ -142,28 +152,23 @@ public class NewAnnotationPrePageLoad {
                     // create a new URI action
                     org.icepdf.core.pobjects.actions.Action action =
                             createURIAction(document.getPageTree().getLibrary(),
-                                "http://www.icepdf.org");
+                                    "http://www.icepdf.org");
                     // or create a new goTo Annotation that links to the page
-                    // number represented by pageCount.  
+                    // number represented by pageCount.
 //                    org.icepdf.core.pobjects.actions.Action action =
 //                            createGoToAction(
 //                                    document.getPageTree().getLibrary(),
 //                                    document, document.getNumberOfPages() - 1);
                     // add the action to the annotation
                     linkAnnotation.addAction(action);
-                    // add it to the page.
-                    page.addAnnotation(linkAnnotation);
+                    // add it to the pageComponent, not the page, as we won't
+                    // see it until the page is re-initialized.
+                    pageViewComponent.addAnnotation(linkAnnotation);
                 }
-                // release the page lock
-                document.getPageTree().releasePage(page, foundWords);
             }
             // removed the search highlighting
             searchController.clearSearchHighlight(pageIndex);
         }
-
-        // show the document and the new annotations.
-        applicationFrame.pack();
-        applicationFrame.setVisible(true);
 
         // The save button can be used in the UI to save a copy of the
         // document.
