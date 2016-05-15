@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
 	
     <groupId>org.pdf4j.icepdf</groupId>
-    <artifactId>icepdf-pom</artifactId>
+    <artifactId>pdf4j-icepdf-pom</artifactId>
     <version>4.4.1</version>
 	
     <name>ICEPDF4 Pom</name>

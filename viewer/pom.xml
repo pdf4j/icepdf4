@@ -3,10 +3,10 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.pdf4j.icepdf</groupId>
-        <artifactId>icepdf-pom</artifactId>
+        <artifactId>pdf4j-icepdf-pom</artifactId>
         <version>4.4.1</version>
     </parent> 
-    <artifactId>icepdf-viewer</artifactId>
+    <artifactId>pdf4j-icepdf-viewer</artifactId>
     <name>ICEPDF4 Viewer</name>	
     <properties>
         <batik.version>1.6</batik.version>
@@ -14,7 +14,7 @@
     <dependencies>
         <dependency>
             <groupId>org.pdf4j.icepdf</groupId>
-            <artifactId>icepdf-core</artifactId>
+            <artifactId>pdf4j-icepdf-core</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
