@@ -7,7 +7,7 @@
         <version>4.4.1</version>
     </parent> 
     <artifactId>icepdf-examples</artifactId>
-    <name>ICEPDF Examples</name>	
+    <name>ICEPDF4 Examples</name>	
     <properties>
         <batik.version>1.6</batik.version>
     </properties>    	

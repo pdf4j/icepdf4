@@ -7,7 +7,7 @@
         <version>4.4.1</version>
     </parent> 
     <artifactId>icepdf-viewer</artifactId>
-    <name>ICEPDF Viewer</name>	
+    <name>ICEPDF4 Viewer</name>	
     <properties>
         <batik.version>1.6</batik.version>
     </properties>    	

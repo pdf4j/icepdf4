@@ -8,7 +8,7 @@
         <version>4.4.1</version>
     </parent> 
     <artifactId>icepdf-webview</artifactId>
-    <name>ICEPDF WebViewer</name>	
+    <name>ICEPDF4 WebViewer</name>	
     <packaging>war</packaging>
     <url>http://pdf4j.gitbub.io/icefaces4</url>
     <properties>

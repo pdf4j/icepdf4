@@ -7,5 +7,5 @@
         <version>4.4.1</version>
     </parent>
     <artifactId>icepdf-core</artifactId>
-    <name>ICEPDF Core</name>  	
+    <name>ICEPDF4 Core</name>  	
 </project>
