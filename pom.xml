@@ -16,63 +16,20 @@
     <modules>
         <module>core</module>
         <module>viewer</module>
+		<module>examples</module>
     </modules>
     <build>
-	<!--
-        <sourceDirectory>.</sourceDirectory>
-		-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.5.1</version>
                 <configuration>
-				<!--
-                    <includes>
-                        <include>src/**/*.java</include>
-                        <include>copy/**/*.java</include>
-                    </includes>
-					-->
                     <source>${jdk.version}</source>
                     <target>${jdk.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
             </plugin>
-			<!--
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.7</version>
-                <executions>
-                    <execution>
-                        <id>copy-resources</id>
-                        <phase>validate</phase>
-                        <goals>
-                            <goal>copy-resources</goal>
-                        </goals>                
-                        <configuration>
-                            <outputDirectory>${basedir}/target/classes</outputDirectory>
-                            <includeEmptyDirs>true</includeEmptyDirs>
-                            <resources>
-                                <resource>
-                                    <directory>src</directory>
-                                    <includes>
-                                        <include>**/*.afm</include>
-                                        <include>**/*.icc</include>
-                                        <include>**/*.html</include>
-                                        <include>**/*.properties</include>
-                                        <include>**/*.gif</include>
-                                        <include>**/*.png</include>
-                                        <include>**/*.jpg</include>
-                                        <include>**/*.xml</include>
-                                    </includes>
-                                </resource>
-                            </resources>
-                        </configuration> 
-                    </execution>
-                </executions>
-            </plugin>
-			-->
         </plugins>
     </build>
 

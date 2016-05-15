@@ -6,8 +6,8 @@
         <artifactId>icepdf-pom</artifactId>
         <version>4.4.1</version>
     </parent> 
-    <artifactId>icepdf-viewer</artifactId>
-    <name>ICEPDF Viewer</name>	
+    <artifactId>icepdf-examples</artifactId>
+    <name>ICEPDF Examples</name>	
     <properties>
         <batik.version>1.6</batik.version>
     </properties>    	
@@ -15,6 +15,11 @@
         <dependency>
             <groupId>org.pdf4j.icepdf</groupId>
             <artifactId>icepdf-core</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.pdf4j.icepdf</groupId>
+            <artifactId>icepdf-viewer</artifactId>
             <version>${project.version}</version>
         </dependency>
         <dependency>
