@@ -58,7 +58,7 @@ public class PrinterApplication {
      * Attempts to Print PDF documents which are specified as application
      * arguments.
      *
-     * @param filePath
+     * @param filePath PDF file name to be printed
      */
     public static void printFile(String filePath) {
         printFile(filePath, null);
@@ -67,8 +67,8 @@ public class PrinterApplication {
      * Attempts to Print PDF documents which are specified as application
      * arguments.
      *
-     * @param filePath
-     * @param printerName
+     * @param filePath      PDF file name to be printed
+     * @param printerName   Target Pinter name
      */
     public static void printFile(String filePath, String printerName) {
         PrintService selectedService = null;

@@ -17,7 +17,6 @@ package org.icepdf.core.util;
 import org.icepdf.core.pobjects.PDimension;
 import org.icepdf.core.pobjects.Page;
 import org.icepdf.core.pobjects.PageTree;
-import org.icepdf.core.util.GraphicsRenderingHints;
 import org.icepdf.core.views.DocumentViewController;
 
 import javax.print.*;
@@ -26,7 +25,6 @@ import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.standard.*;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterJob;
@@ -74,7 +72,7 @@ public class PrintHelper implements Printable {
      * media sized and print quality.
      *
      * @param viewController document view controller
-     * @param pageTree       doucment page tree.
+     * @param pageTree       document page tree.
      * @param paperSizeName  MediaSizeName constant of paper size to print to.
      * @param printQuality   quality of the print job, draft, quality etc.
      */
@@ -128,7 +126,7 @@ public class PrintHelper implements Printable {
      * should only be used by advanced users.
      *
      * @param viewController           document view controller
-     * @param pageTree                 doucment page tree.
+     * @param pageTree                 document page tree.
      * @param docAttributeSet          MediaSizeName constant of paper size to print to.
      * @param printRequestAttributeSet quality of the print job, draft, quality etc.
      */
@@ -151,6 +149,33 @@ public class PrintHelper implements Printable {
     }
 
     /**
+     * Creates a new <code>PrintHelper</code> instance using the specified
+     * doc and print attribute sets.  This constructor offers the most flexibility
+     * as it allows the attributes sets to be pre configured.  This method
+     * should only be used by advanced users.
+     *
+     * @param viewController           document view controller
+     * @param pageTree                 document page tree.
+     * @param userRotation
+     * @param docAttributeSet          MediaSizeName constant of paper size to print to.
+     * @param printRequestAttributeSet quality of the print job, draft, quality etc.
+     */
+    public PrintHelper(DocumentViewController viewController, PageTree pageTree,
+                       float userRotation,
+                       HashDocAttributeSet docAttributeSet,
+                       HashPrintRequestAttributeSet printRequestAttributeSet) {
+        this.viewController = viewController;
+        this.pageTree = pageTree;
+        this.userRotation = userRotation;
+        // blindly assign doc and print attribute sets.
+        this.docAttributeSet = docAttributeSet;
+        this.printRequestAttributeSet = printRequestAttributeSet;
+        // find available printers
+        services = lookForPrintServices();
+        // default setup, all pages, shrink to fit and no dialog.
+        setupPrintService(0, this.pageTree.getNumberOfPages(), 1, true, false);
+    }
+    /**
      * Configures the PrinterJob instance with the specified parameters.
      *
      * @param startPage             start of page range, zero-based index.
@@ -161,7 +186,7 @@ public class PrintHelper implements Printable {
      * @param showPrintDialog       true, to display a print setup dialog when this method
      *                              is initiated; false, otherwise.  This dialog will be shown after the
      *                              page dialog if it is visible.
-     * @return true if print setup should continue, false if printing was cancelled
+     * @return true if print setup should continue, false if printing was canceled
      *         by user interaction with optional print dialog.
      */
     public boolean setupPrintService(int startPage,
@@ -223,7 +248,7 @@ public class PrintHelper implements Printable {
      * method should only be used by advanced users.
      *
      * @param printService             print service to print document to.
-     * @param printRequestAttributeSet print jobt attribute set.
+     * @param printRequestAttributeSet print job attribute set.
      * @param shrinkToPrintableArea    true, to enable shrink to fit printable area;
      *                                 false, otherwise.
      */
@@ -276,7 +301,7 @@ public class PrintHelper implements Printable {
 
     /**
      * Gets the fit to margin property.  If enabled the page is scaled to fit
-     * the paper size maxing out on the smallest paper dimension. 
+     * the paper size max out on the smallest paper dimension. 
      *
      * @return true if fit to margin is enabled.
      */
@@ -502,7 +527,7 @@ public class PrintHelper implements Printable {
      * Utility for creating a print setup dialog.
      *
      * @return print service selected by the user, or null if the user
-     *         cancelled the dialog.
+     *         canceled the dialog.
      */
     private PrintService getSetupDialog() {
         final int offset = 50;
