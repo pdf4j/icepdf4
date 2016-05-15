@@ -16,7 +16,7 @@ import javax.print.attribute.standard.JobName;
 import javax.print.attribute.standard.MediaName;
 import javax.print.attribute.standard.MediaSizeName;
 import javax.print.attribute.standard.PrintQuality;
-import javax.print.attribute.standard.Sides;
+//import javax.print.attribute.standard.Sides;
 import org.icepdf.core.exceptions.PDFException;
 import org.icepdf.core.exceptions.PDFSecurityException;
 import org.icepdf.core.pobjects.Document;
@@ -183,7 +183,7 @@ public class PrinterApplication {
                     }
                 }
             }
-            System.out.printf("file: %s, printer %s, password: %s \n", file, print, pwd);
+            System.out.printf("\nInput parameters::\nfile: %s, printer %s, password: %s \n", file, print, pwd);
             if (file == null) {
                 throw new Exception("\nNo PDF input file found\n");
             }
@@ -196,14 +196,14 @@ public class PrinterApplication {
 
     private static void printHelp() {
         StringBuilder sb = new StringBuilder();
-        sb.append("java org.icepdf.core.util.PrinterApplicaion ")
-                .append("-file \"pdf file name\" ")
-                .append("-printer \"printer name\" ")
-                .append("-password \"password to pdf file\" \n\nParameter details:\n")
-                .append("\t-file     \"pdf file name\", required field\n")
-                .append("\t-printer  \"printer name\", Optional default printer used when ignored\n")
-                .append("\t-password \"password to pdf file\" Optional use only when required\n")
-                .append("\t-help      Print this usage help.\n");
+        sb.append("java java -jar icepdf-core-4.x.x.jar ")
+            .append("-file \"pdf file name\" ")
+            .append("-printer \"printer name\" ")
+            .append("-password \"password to pdf file\" \n\nParameter details:\n")
+            .append("\t-file     \"pdf file name\", required field\n")
+            .append("\t-printer  \"printer name\", Optional default printer used when ignored\n")
+            .append("\t-password \"password to pdf file\" Optional use only when required\n")
+            .append("\t-help      Print this usage help.\n");
         System.out.println(sb.toString());
     }
 }
