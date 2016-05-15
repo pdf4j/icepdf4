@@ -13,7 +13,7 @@
     </properties>    	
     <dependencies>
         <dependency>
-            <groupId>org.icepdf.os</groupId>
+            <groupId>org.pdf4j.icepdf</groupId>
             <artifactId>icepdf-core</artifactId>
             <version>${project.version}</version>
         </dependency>
