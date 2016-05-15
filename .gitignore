@@ -13,3 +13,5 @@ hs_err_pid*
 /core/target/
 /viewer/target/
 /examples/target/
+/icefaces/target/
+/webviewer/target/

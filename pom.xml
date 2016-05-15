@@ -17,6 +17,7 @@
         <module>core</module>
         <module>viewer</module>
 		<module>examples</module>
+        <module>webviewer</module>
     </modules>
     <build>
         <plugins>
