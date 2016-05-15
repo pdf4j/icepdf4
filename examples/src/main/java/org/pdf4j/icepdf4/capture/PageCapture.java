@@ -1,3 +1,5 @@
+package org.pdf4j.icepdf4.capture;
+
 /*
  * Copyright 2006-2012 ICEsoft Technologies Inc.
  *
