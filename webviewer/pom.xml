@@ -16,7 +16,7 @@
         <icefaces.product.name>ICEfaces</icefaces.product.name>
         <icefaces.lib.name>icefaces</icefaces.lib.name>
         <icefaces.version>4.1.1</icefaces.version>
-        <icepdf.version>4.4.1</icepdf.version>
+        <icepdf.version>${project.version}</icepdf.version>
         <!-- Versions of JSF implementations -->
         <mojarra.version>2.2.12</mojarra.version>
         <!-- Various library versions settable from one place -->
