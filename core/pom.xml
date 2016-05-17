@@ -26,20 +26,12 @@
                                 <source>src/main/java</source>
                                 <source>src/main/pdf4j</source>
                             </sources>
+							<excludes>
+								<exclude>src/main/java/org/jpedal/</exclude>
+							</excludes>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <configuration>
-                    <archive>
-                        <manifest>
-                            <mainClass>org.pdf4j.icepdf.util.PrinterApplication</mainClass>
-                        </manifest>
-                    </archive>
-                </configuration>
             </plugin>
         </plugins>
     </build> 	
