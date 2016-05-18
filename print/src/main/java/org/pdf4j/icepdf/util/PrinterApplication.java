@@ -213,7 +213,7 @@ public class PrinterApplication {
 
     private static void printHelp() {
         StringBuilder sb = new StringBuilder();
-        sb.append("java java -jar icepdf-core-4.x.x.jar ")
+        sb.append("java java -jar pdf4j-icepdf-print-x.x.x.jar ")
             .append("-file \"pdf file name\" ")
             .append("-printer \"printer name\" ")
             .append("-password \"password to pdf file\" \n\nParameter details:\n")
