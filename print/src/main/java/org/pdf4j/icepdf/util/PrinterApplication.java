@@ -16,6 +16,7 @@
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.Date;
 import java.util.Locale;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -92,7 +93,7 @@ public class PrinterApplication {
             return;
         }
         if (printerName == null || printerName.trim().length() == 0) {
-            System.out.println("PrinterName is empty, selecting default printer");
+            System.out.println("PrinterName is empty, using default printer");
             selectedService = PrintServiceLookup.lookupDefaultPrintService();
         } else {
 
@@ -147,8 +148,9 @@ public class PrinterApplication {
             PrintHelper printHelper = new PrintHelper(null, pdf.getPageTree(),
                     hd, hp);
             printHelper.setupPrintService(selectedService, hp, true);
+            System.out.println("Print job started, " + new Date());
             printHelper.print(new PrintJobWatcher());
-            System.out.println("Print job completed");
+            System.out.println("Print job completed, " + new Date());
 
         } catch (FileNotFoundException e) {
             logger.log(Level.WARNING, "PDF file not found.", e);
